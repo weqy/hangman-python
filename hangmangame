@@ -1,0 +1,24 @@
+import random # randomizer
+words = ['water','earth','air','fire','avatar','episodes'] # all possible words
+word = random.choice(words) # chooses randomly from our list
+guesses = '' # no guesses yet
+turns = 5 # turns when the game starts
+while turns > 0: # while the user has not
+    failed = 0 # the user has failed 0 times
+    for char in word: # if character is in word
+        if char in guesses: # if guess is right
+            print (char,end="") # prints the new hangman
+        else: # if char is not right
+            print ("_",end=""), #
+            failed += 1 # lost one guess
+    if failed == 0: # player wins
+        print ("\nYou won") # winning message
+        break # terminates loop
+    guess = input("\nguess a character: ") # user input to guess
+    guesses += guess # guesses = guess
+    if guess not in word: # if the user guesses wrong
+        turns -= 1 # they lose a turn
+        print("\nWrong") # lets the user know they are wrong
+        print("\nYou have", + turns, 'more guesses') # tells them how many guesses they have left
+        if turns == 0: # if they lose all their guesses
+            print ("\nYou Lose") # losing message
